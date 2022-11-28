@@ -23,11 +23,13 @@ struct ContentView: View {
         }
     }
 
+    // MARK: - Body
+
     var body: some View {
         NavigationView {
             ZStack {
                 Color.clear
-                
+
                 Image("magazine-front-cover")
                     .resizable()
                     .scaledToFit()
@@ -68,13 +70,59 @@ struct ContentView: View {
             .onAppear {
                 isAnimating = true
             }
-            
-            //MARK: - Info Panel
-            
+
+            // MARK: - Info Panel
+
             .overlay(
                 InfoPanelView(scale: imageScale, offset: imageOffset) // Use Color.clear to make sure view is on top of ZStack
                     .padding(20)
-                ,alignment: .top
+                , alignment: .top
+            )
+
+            // MARK: - Control Panel
+
+            .overlay(
+                HStack {
+                    Button {
+                        withAnimation(.spring()) {
+                            if imageScale > 1 {
+                                imageScale -= 1
+                            }
+
+                            if imageScale <= 1 {
+                                imageScale = 1
+                            }
+                        }
+
+                    } label: {
+                        ControlImageView(iconName: "minus.magnifyingglass")
+                    }
+
+                    Button {
+                        resetImageState()
+                    } label: {
+                        ControlImageView(iconName: "arrow.up.left.and.down.right.magnifyingglass")
+                    }
+
+                    Button {
+                        withAnimation(.spring()) {
+                            if imageScale < 5 {
+                                imageScale += 1
+                            }
+                            if imageScale > 5 {
+                                imageScale = 5
+                            }
+                        }
+                    } label: {
+                        ControlImageView(iconName: "plus.magnifyingglass")
+                    }
+                }
+                .padding(EdgeInsets(top: 12, leading: 20, bottom: 12, trailing: 20))
+                .background(.ultraThinMaterial)
+                .cornerRadius(12)
+
+                .padding(.top, 30)
+                , alignment: .bottom
             )
         }
         .navigationSplitViewStyle(.prominentDetail)

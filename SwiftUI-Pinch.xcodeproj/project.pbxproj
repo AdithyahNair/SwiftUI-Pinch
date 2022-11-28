@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1427C15A29346F36004B5218 /* ControlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1427C15929346F36004B5218 /* ControlImageView.swift */; };
 		14C10BA72931C2CE00EB2D38 /* SwiftUI_PinchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C10BA62931C2CE00EB2D38 /* SwiftUI_PinchApp.swift */; };
 		14C10BA92931C2CE00EB2D38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C10BA82931C2CE00EB2D38 /* ContentView.swift */; };
 		14C10BAB2931C2CF00EB2D38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14C10BAA2931C2CF00EB2D38 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1427C15929346F36004B5218 /* ControlImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlImageView.swift; sourceTree = "<group>"; };
 		14C10BA32931C2CE00EB2D38 /* SwiftUI-Pinch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-Pinch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14C10BA62931C2CE00EB2D38 /* SwiftUI_PinchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_PinchApp.swift; sourceTree = "<group>"; };
 		14C10BA82931C2CE00EB2D38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,11 +55,11 @@
 		14C10BA52931C2CE00EB2D38 /* SwiftUI-Pinch */ = {
 			isa = PBXGroup;
 			children = (
+				14C10BA62931C2CE00EB2D38 /* SwiftUI_PinchApp.swift */,
 				14C10BB72931C42D00EB2D38 /* Data */,
 				14C10BB62931C42800EB2D38 /* Model */,
 				14C10BB52931C42200EB2D38 /* Views */,
 				14C10BB42931C41500EB2D38 /* Screen */,
-				14C10BA62931C2CE00EB2D38 /* SwiftUI_PinchApp.swift */,
 				14C10BAA2931C2CF00EB2D38 /* Assets.xcassets */,
 				14C10BAC2931C2CF00EB2D38 /* Preview Content */,
 			);
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				14CF4F212931D383004EC87E /* InfoPanelView.swift */,
+				1427C15929346F36004B5218 /* ControlImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1427C15A29346F36004B5218 /* ControlImageView.swift in Sources */,
 				14C10BA92931C2CE00EB2D38 /* ContentView.swift in Sources */,
 				14C10BA72931C2CE00EB2D38 /* SwiftUI_PinchApp.swift in Sources */,
 				14CF4F222931D383004EC87E /* InfoPanelView.swift in Sources */,
