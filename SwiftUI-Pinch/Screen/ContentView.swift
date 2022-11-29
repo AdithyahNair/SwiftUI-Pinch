@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var isAnimating: Bool = false
     @State private var imageScale: Double = 1
     @State private var imageOffset: CGSize = .zero
-
+    @State private var isDrawerOpen: Bool = false
     // MARK: - Function
 
     func resetImageState() {
@@ -146,6 +146,34 @@ struct ContentView: View {
 
                 .padding(.top, 30)
                 , alignment: .bottom
+            )
+            
+            //MARK: - Drawer Interface
+            
+            .overlay(
+                HStack(spacing: 12) {
+                    Image(systemName: isDrawerOpen ? "chevron.compact.right" : "chevron.compact.left")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 40)
+                        .padding(8)
+                        .foregroundStyle(.secondary)
+                        .onTapGesture {
+                            withAnimation(.easeOut) {
+                                isDrawerOpen.toggle()
+                            }
+                        }
+                    
+                    Spacer()
+                }
+                    .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
+                    .background(.ultraThinMaterial)
+                    .opacity(isAnimating ? 1 : 0)
+                    .frame(width: UIScreen.main.bounds.width/1.4)
+                    .cornerRadius(12)
+                    .offset(x: isDrawerOpen ? 20: 215)
+                    .padding(.top, UIScreen.main.bounds.height / 10)
+                , alignment: .topTrailing
             )
         }
         .navigationSplitViewStyle(.prominentDetail)
