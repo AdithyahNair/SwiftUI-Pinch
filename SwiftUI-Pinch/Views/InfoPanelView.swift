@@ -22,7 +22,7 @@ struct InfoPanelView: View {
                 .frame(width: 30,
                        height: 30)
                 .symbolRenderingMode(.hierarchical)
-                .onLongPressGesture(minimumDuration: 1) {
+                .onLongPressGesture(minimumDuration: 0.5) {
                     isInfoPanelVisible.toggle()
                 }
             
