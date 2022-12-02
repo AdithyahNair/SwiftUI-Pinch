@@ -14,7 +14,15 @@ struct ContentView: View {
     @State private var imageScale: Double = 1
     @State private var imageOffset: CGSize = .zero
     @State private var isDrawerOpen: Bool = false
+
+    let pages: [Page] = pagesData
+    @State private var pageIndex: Int = 1
+
     // MARK: - Function
+
+    func loadImage(pageIndex: Int) -> String {
+        return pages[pageIndex - 1].imageName
+    }
 
     func resetImageState() {
         return withAnimation(.spring()) {
@@ -30,7 +38,7 @@ struct ContentView: View {
             ZStack {
                 Color.clear
 
-                Image("magazine-front-cover")
+                Image(loadImage(pageIndex: pageIndex))
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(10)
@@ -76,7 +84,7 @@ struct ContentView: View {
                                         resetImageState()
                                     }
                                 }
-                                
+
                             })
                             .onEnded({ _ in
                                 withAnimation(.linear(duration: 1)) {
@@ -147,9 +155,9 @@ struct ContentView: View {
                 .padding(.top, 30)
                 , alignment: .bottom
             )
-            
-            //MARK: - Drawer Interface
-            
+
+            // MARK: - Drawer Interface
+
             .overlay(
                 HStack(spacing: 12) {
                     Image(systemName: isDrawerOpen ? "chevron.compact.right" : "chevron.compact.left")
@@ -163,16 +171,32 @@ struct ContentView: View {
                                 isDrawerOpen.toggle()
                             }
                         }
-                    
+
+                    ForEach(pages) { page in
+                        Image(page.imageName)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 90)
+                            .cornerRadius(4)
+                            .shadow(radius: 4)
+                            .opacity(isDrawerOpen ? 1 : 0)
+                            .animation(.easeOut(duration: 0.5), value: isDrawerOpen)
+                            .onTapGesture {
+                                withAnimation(.easeOut) {
+                                    pageIndex = page.id
+                                }
+                            }
+                    }
+
                     Spacer()
                 }
-                    .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
-                    .background(.ultraThinMaterial)
-                    .opacity(isAnimating ? 1 : 0)
-                    .frame(width: UIScreen.main.bounds.width/1.4)
-                    .cornerRadius(12)
-                    .offset(x: isDrawerOpen ? 20: 215)
-                    .padding(.top, UIScreen.main.bounds.height / 10)
+                .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
+                .background(.ultraThinMaterial)
+                .opacity(isAnimating ? 1 : 0)
+                .frame(width: UIScreen.main.bounds.width / 1.4)
+                .cornerRadius(12)
+                .offset(x: isDrawerOpen ? 20 : 240)
+                .padding(.top, UIScreen.main.bounds.height / 10)
                 , alignment: .topTrailing
             )
         }
